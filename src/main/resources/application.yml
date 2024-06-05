@@ -1,8 +1,0 @@
-spring:
-  profiles:
-    active: dev
-  application:
-    name: zaggle-travel-module
-
-app:
-  message: This is primary Application Property for lib mock service

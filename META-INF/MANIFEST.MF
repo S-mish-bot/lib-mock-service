@@ -1,4 +1,4 @@
 Manifest-Version: 1.0
-Premain-Class: com.assignment.libmocker.agent.MockingAgent
+Premain-Class: com.assignment.agent.MockingAgent
 Created-By: 17.0.11 (Amazon.com Inc.)
 
