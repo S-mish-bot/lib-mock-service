@@ -1,0 +1,4 @@
+com/example/mockinglibrary/controller/PostController.class
+com/example/mockinglibrary/entity/Post.class
+com/example/mockinglibrary/repository/PostRepository.class
+com/example/mockinglibrary/MockingLibraryApplication.class

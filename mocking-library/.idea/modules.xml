@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/mocking-library.iml" filepath="$PROJECT_DIR$/.idea/mocking-library.iml" />
+      <module fileurl="file://$PROJECT_DIR$/agent.iml" filepath="$PROJECT_DIR$/agent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app.iml" filepath="$PROJECT_DIR$/app.iml" />
     </modules>
   </component>
 </project>
