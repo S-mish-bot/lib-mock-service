@@ -1,0 +1,30 @@
+#version: '3.8'
+#services:
+#  agent:
+#    build:
+#      context: ./agent
+#      dockerfile: Dockerfile
+#
+#  app:
+#    build:
+#      context: ./app
+#      dockerfile: Dockerfile
+#    environment:
+#      - DB_HOST=db
+#      - DB_PORT=5432
+#      - DB_USERNAME=postgres
+#      - DB_PASSWORD=password
+#      - HT_MODE=RECORD
+#    depends_on:
+#      - db
+#    ports:
+#      - "8080:8080"
+#
+#  db:
+#    image: postgres:15
+#    environment:
+#      POSTGRES_DB: mock_service_dev
+#      POSTGRES_USER: postgres
+#      POSTGRES_PASSWORD: Gitian620@
+#    ports:
+#      - "5432:5432"

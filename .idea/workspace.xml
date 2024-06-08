@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="6eac995a-a490-46aa-8755-7ccc6ea8bc3e" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitToolBoxStore">
+    <option name="projectConfigVersion" value="5" />
+    <option name="recentBranches">
+      <RecentBranches>
+        <option name="branchesForRepo">
+          <list>
+            <RecentBranchesForRepo>
+              <option name="branches">
+                <list>
+                  <RecentBranch>
+                    <option name="branchName" value="feature/new-mock" />
+                    <option name="lastUsedInstant" value="1717673815" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="feature/mock" />
+                    <option name="lastUsedInstant" value="1717673814" />
+                  </RecentBranch>
+                </list>
+              </option>
+              <option name="repositoryRootUrl" value="file://$PROJECT_DIR$" />
+            </RecentBranchesForRepo>
+          </list>
+        </option>
+      </RecentBranches>
+    </option>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="DEPENDENCY_CHECKER_PROBLEMS_TAB" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
+  <component name="ProjectId" id="2hLcfoEYiB3EB4qIDcEapN3w9UZ" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
+    <option name="showVisibilityIcons" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.LibMockerApplication.executor": "Run",
+    "Application.com.assignment.LibMockerApplication.executor": "Run",
+    "Maven.libmocker [clean,compile,package].executor": "Run",
+    "Maven.libmocker [clean,install].executor": "Run",
+    "Maven.libmocker [clean,package].executor": "Run",
+    "Maven.libmocker [dependency:analyze].executor": "Run",
+    "Maven.libmocker [dependency:tree].executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "feature/new-mock",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/shrutimishra/Documents/GitHub/lib-mock-service",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2"
+  },
+  "keyToStringList": {
+    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
+      "Properties"
+    ]
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/agent/src/main/java/com/assignment" />
+      <recent name="$PROJECT_DIR$/app/src/main/java/com/assignment" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/agent/src" />
+      <recent name="$PROJECT_DIR$/app" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.assignment.libmocker" />
+    </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="mvn clean compile package" />
+      <command value="mvn dependency:tree" />
+      <command value="mvn dependency:analyze " />
+      <command value="mvn clean install" />
+      <command value="mvn clean package" />
+    </option>
+  </component>
+  <component name="RunManager" selected="Application.com.assignment.LibMockerApplication">
+    <configuration name="LibMockerApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <envs>
+        <env name="SPRING_DATASOURCE_URL" value="jdbc:postgresql://localhost:5432/mock_service_dev" />
+        <env name="POSTGRES_USER" value="postgres" />
+        <env name="POSTGRES_PASSWORD" value="Gitian620@" />
+      </envs>
+      <option name="MAIN_CLASS_NAME" value="com.assignment.libmocker.LibMockerApplication" />
+      <module name="libmocker" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.assignment.libmocker.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="com.assignment.LibMockerApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <envs>
+        <env name="SPRING_DATASOURCE_URL" value="jdbc:postgresql://localhost:5432/mock_service_dev" />
+        <env name="POSTGRES_USER" value="postgres" />
+        <env name="POSTGRES_PASSWORD" value="Gitian620@" />
+      </envs>
+      <option name="MAIN_CLASS_NAME" value="com.assignment.LibMockerApplication" />
+      <module name="app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.assignment.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="lib-mock-service" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="lib-mock-service" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.com.assignment.LibMockerApplication" />
+      <item itemvalue="Application.LibMockerApplication" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.com.assignment.LibMockerApplication" />
+        <item itemvalue="Application.LibMockerApplication" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6eac995a-a490-46aa-8755-7ccc6ea8bc3e" name="Changes" comment="" />
+      <created>1717376904254</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1717376904254</updated>
+    </task>
+    <servers />
+  </component>
+</project>

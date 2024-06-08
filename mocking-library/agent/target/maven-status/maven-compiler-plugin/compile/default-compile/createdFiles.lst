@@ -1,0 +1,5 @@
+com/example/mockinglibrary/agent/MockingLibraryAgent.class
+com/example/mockinglibrary/agent/MockingLibraryAgent$DbInterceptor.class
+com/example/mockinglibrary/agent/MockingLibraryAgent$HttpInterceptor.class
+com/example/mockinglibrary/agent/MockingLibraryAgent$1.class
+com/example/mockinglibrary/agent/MockingLibraryAgent$2.class
