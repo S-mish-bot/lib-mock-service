@@ -22,6 +22,14 @@ public class Post {
         this.id = id;
     }
 
+    public Post(String name, String contents) {
+        this.name = name;
+        this.contents = contents;
+    }
+
+    public Post() {
+    }
+
     public String getName() {
         return name;
     }

@@ -33,7 +33,7 @@ services:
       - DB_PORT=5432
       - DB_USERNAME=postgres
       - DB_PASSWORD=password
-      - HT_MODE=RECORD
+      - HT_MODE=REPLAY
       - JAVA_OPTS=-javaagent:/opt/agent/mocking-library-agent.jar
 
 volumes:
