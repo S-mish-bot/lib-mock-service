@@ -7,7 +7,12 @@ import net.bytebuddy.dynamic.DynamicType;
 import net.bytebuddy.matcher.ElementMatchers;
 import net.bytebuddy.utility.JavaModule;
 
+import java.io.File;
+import java.io.IOException;
 import java.lang.instrument.Instrumentation;
+import java.net.URISyntaxException;
+import java.security.CodeSource;
+import java.util.jar.JarFile;
 
 public class MockingLibraryAgent {
     public static void premain(String arguments, Instrumentation instrumentation) {
