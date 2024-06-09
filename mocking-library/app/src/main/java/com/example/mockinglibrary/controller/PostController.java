@@ -12,9 +12,12 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api")
 public class PostController {
+    private final PostRepository postRepository;
 
     @Autowired
-    private PostRepository postRepository;
+    public PostController(PostRepository postRepository) {
+        this.postRepository = postRepository;
+    }
 
     @PostMapping("/createNewPost")
     public Map<String, Object> createNewPost(@RequestBody Map<String, String> request) {
@@ -24,9 +27,9 @@ public class PostController {
             Post post = new Post();
             post.setName(request.get("post_name"));
             post.setContents(request.get("post_contents"));
-            post = postRepository.save(post);
+            Post savedPost = postRepository.save(post);
 
-            response.put("db_post", post);
+            response.put("db_post", savedPost);
 
             RestTemplate restTemplate = new RestTemplate();
             String apiResponse = restTemplate.getForObject("http://worldtimeapi.org/api/timezone/Asia/Kolkata", String.class);

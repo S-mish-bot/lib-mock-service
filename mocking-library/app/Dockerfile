@@ -3,6 +3,9 @@
 # Stage 1: Build the application JAR
 FROM maven:3.8.4-openjdk-11-slim AS build-app
 WORKDIR /app
+COPY ./app/pom.xml /app/pom.xml
+COPY ./app/src /app/src
+RUN mvn dependency:go-offline
 COPY ./app /app
 RUN mvn clean package -DskipTests
 

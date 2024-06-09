@@ -6,13 +6,9 @@ import net.bytebuddy.description.type.TypeDescription;
 import net.bytebuddy.dynamic.DynamicType;
 import net.bytebuddy.matcher.ElementMatchers;
 import net.bytebuddy.utility.JavaModule;
+import net.bytebuddy.utility.nullability.NeverNull;
 
-import java.io.File;
-import java.io.IOException;
 import java.lang.instrument.Instrumentation;
-import java.net.URISyntaxException;
-import java.security.CodeSource;
-import java.util.jar.JarFile;
 
 public class MockingLibraryAgent {
     public static void premain(String arguments, Instrumentation instrumentation) {
@@ -38,6 +34,7 @@ public class MockingLibraryAgent {
                                                             TypeDescription typeDescription,
                                                             ClassLoader classLoader,
                                                             JavaModule module) {
+                        System.out.println("Transforming PostRepository");
                         return builder.method(ElementMatchers.named("save"))
                                 .intercept(Advice.to(DbInterceptor.class));
                     }
