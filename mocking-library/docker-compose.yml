@@ -1,0 +1,81 @@
+version: '3.8'
+
+services:
+  agent:
+    build:
+      context: .
+      dockerfile: agent/Dockerfile
+    volumes:
+      - agent-volume:/opt/agent
+
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: mock_service_dev
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: Gitian620@
+    ports:
+      - "5432:5432"
+
+  app:
+    build:
+      context: .
+      dockerfile: app/Dockerfile
+    volumes:
+      - agent-volume:/opt/agent
+    ports:
+      - "8080:8080"
+    depends_on:
+      - agent
+      - db
+    environment:
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_USERNAME=postgres
+      - DB_PASSWORD=password
+      - HT_MODE=REPLAY
+      - JAVA_OPTS=-javaagent:/opt/agent/mocking-library-agent.jar
+
+volumes:
+  agent-volume:
+
+
+
+
+#version: '3.8'
+#services:
+#  app:
+#    build:
+#      context: .
+#      dockerfile: ./app/Dockerfile
+#    environment:
+#      - DB_HOST=db
+#      - DB_PORT=5432
+#      - DB_USERNAME=postgres
+#      - DB_PASSWORD=password
+#      - HT_MODE=REPLAY
+#    depends_on:
+#      - db
+#      - agent
+#    volumes:
+#      - agent_volume:/opt/agent
+#    ports:
+#      - "8080:8080"
+#
+#  db:
+#    image: postgres:15
+#    environment:
+#      POSTGRES_DB: mock_service_dev
+#      POSTGRES_USER: postgres
+#      POSTGRES_PASSWORD: Gitian620@
+#    ports:
+#      - "5432:5432"
+#
+#  agent:
+#    build:
+#      context: ./agent
+#      dockerfile: Dockerfile
+#    volumes:
+#      - agent_volume:/opt/agent
+#volumes:
+#  agent_volume:
