@@ -1,4 +1,7 @@
-com/example/mockinglibrary/controller/PostController.class
-com/example/mockinglibrary/entity/Post.class
+com/example/mockinglibrary/dto/ResponseDTO.class
 com/example/mockinglibrary/repository/PostRepository.class
+com/example/mockinglibrary/dto/RequestDTO.class
 com/example/mockinglibrary/MockingLibraryApplication.class
+com/example/mockinglibrary/controller/PostController.class
+com/example/mockinglibrary/service/PostService.class
+com/example/mockinglibrary/entity/Post.class

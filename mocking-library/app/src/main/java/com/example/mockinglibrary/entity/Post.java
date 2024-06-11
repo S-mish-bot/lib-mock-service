@@ -13,7 +13,6 @@ public class Post {
     private String name;
     private String contents;
 
-    // Getters and setters
     public Long getId() {
         return id;
     }

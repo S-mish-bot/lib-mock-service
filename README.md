@@ -11,26 +11,37 @@ Lib Mock Service is a Spring Boot application designed to facilitate mocking of 
 
 ## Project Structure
 
-.
-└── mocking-library
-    ├── agent
-    │   └── src
-    │       └── main
-    │           ├── java
-    │           │   └── com
-    │           │       └── example
-    │           │           └── mockinglibrary
-    │           │               └── agent
-    │           └── resources
-    │               └── META-INF
-    └── app
-        └── src
-            └── main
-                ├── java
-                │   └── com
-                │       └── example
-                │           └── mockinglibrary
-                │               ├── controller
-                │               ├── entity
-                │               └── repository
-                └── resources
+mocking-library/
+├── agent/
+│ ├── Dockerfile
+│ ├── pom.xml
+│ └── src/
+│ └── main/
+│ └── java/
+│ └── com/
+│ └── example/
+│ └── mockinglibrary/
+│ └── agent/
+│ └── MockingLibraryAgent.java
+├── app/
+│ ├── Dockerfile
+│ ├── pom.xml
+│ ├── src/
+│ └── main/
+│ ├── java/
+│ │ └── com/
+│ │ └── example/
+│ │ └── mockinglibrary/
+│ │ ├── MockingLibraryApplication.java
+│ │ ├── controller/
+│ │ │ └── PostController.java
+│ │ ├── entity/
+│ │ │ └── Post.java
+│ │ └── repository/
+│ │ └── PostRepository.java
+│ └── resources/
+│ └── application.properties
+├── docker-compose.yml
+└── README.md
+
+
