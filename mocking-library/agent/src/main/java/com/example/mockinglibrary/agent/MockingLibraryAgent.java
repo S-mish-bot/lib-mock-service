@@ -10,7 +10,6 @@ public class MockingLibraryAgent {
     public static void premain(String arguments, Instrumentation instrumentation) {
         String mode = System.getenv("HT_MODE");
 
-        //todo: third way of mocking JdbcTemplate and RestTemplate
         new AgentBuilder.Default()
                 .type(ElementMatchers.named("org.springframework.web.client.RestTemplate"))
                 .transform((builder, typeDescription, classLoader, javaModule) -> builder
@@ -25,7 +24,7 @@ public class MockingLibraryAgent {
                         .intercept(Advice.to(mode.equals("REPLAY") ? DbReplayAdvice.class : DbRecordAdvice.class))
                 ).installOn(instrumentation);
 
-        //second way of mocking JdbcTemplate and RestTemplate
+
 //        new AgentBuilder.Default()
 //                .type(ElementMatchers.nameContains("RestTemplate"))
 //                .transform((builder, typeDescription, classLoader, javaModule) -> {
@@ -48,7 +47,9 @@ public class MockingLibraryAgent {
 //                    return builder;
 //                }).installOn(instrumentation);
 
-        //first way of mocking JdbcTemplate and RestTemplate
+
+
+
 //        new AgentBuilder.Default()
 //                .type(ElementMatchers.nameContains("RestTemplate"))
 //                .transform((builder, typeDescription, classLoader, javaModule) -> {
