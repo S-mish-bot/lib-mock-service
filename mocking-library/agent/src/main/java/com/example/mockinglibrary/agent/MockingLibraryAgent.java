@@ -10,6 +10,7 @@ public class MockingLibraryAgent {
     public static void premain(String arguments, Instrumentation instrumentation) {
         String mode = System.getenv("HT_MODE");
 
+        //todo: third way of mocking JdbcTemplate and RestTemplate
         new AgentBuilder.Default()
                 .type(ElementMatchers.named("org.springframework.web.client.RestTemplate"))
                 .transform((builder, typeDescription, classLoader, javaModule) -> builder
@@ -24,6 +25,7 @@ public class MockingLibraryAgent {
                         .intercept(Advice.to(mode.equals("REPLAY") ? DbReplayAdvice.class : DbRecordAdvice.class))
                 ).installOn(instrumentation);
 
+        //todo: second way of mocking JdbcTemplate and RestTemplate
 //        new AgentBuilder.Default()
 //                .type(ElementMatchers.nameContains("RestTemplate"))
 //                .transform((builder, typeDescription, classLoader, javaModule) -> {
@@ -42,6 +44,26 @@ public class MockingLibraryAgent {
 //                        return builder.method(ElementMatchers.named("queryForObject"))
 //                                .intercept(Advice.to(DbInterceptor.class));
 ////                                .intercept(FixedValue.value(new JdbcTemplateMock()));
+//                    }
+//                    return builder;
+//                }).installOn(instrumentation);
+        //todo: first way of mocking JdbcTemplate and RestTemplate
+//        new AgentBuilder.Default()
+//                .type(ElementMatchers.nameContains("RestTemplate"))
+//                .transform((builder, typeDescription, classLoader, javaModule) -> {
+//                    if ("REPLAY".equalsIgnoreCase(mode)) {
+//                        return builder.method(ElementMatchers.named("getForObject"))
+//                                .intercept(FixedValue.value("{\"datetime\":\"2024-06-06T12:34:56.789Z\"}"));
+//                    }
+//                    return builder;
+//                }).installOn(instrumentation);
+//
+//        new AgentBuilder.Default()
+//                .type(ElementMatchers.nameContains("JdbcTemplate"))
+//                .transform((builder, typeDescription, classLoader, javaModule) -> {
+//                    if ("REPLAY".equalsIgnoreCase(mode)) {
+//                        return builder.method(ElementMatchers.named("queryForObject"))
+//                                .intercept(FixedValue.value(new JdbcTemplateMock()));
 //                    }
 //                    return builder;
 //                }).installOn(instrumentation);
@@ -79,10 +101,10 @@ public class MockingLibraryAgent {
         }
     }
 
-    private static class PostMock {
-        public Object save(Object post) {
-            // Mock response
-            return post;
-        }
-    }
+//    private static class PostMock {
+//        public Object save(Object post) {
+//            // Mock response
+//            return post;
+//        }
+//    }
 }

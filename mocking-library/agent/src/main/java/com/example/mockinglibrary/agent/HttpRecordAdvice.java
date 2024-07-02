@@ -2,11 +2,10 @@ package com.example.mockinglibrary.agent;
 
 import net.bytebuddy.asm.Advice;
 
-import java.util.logging.Logger;
 
 public class HttpRecordAdvice {
 
-    private static final Logger logger = Logger.getLogger(HttpRecordAdvice.class.getName());
+//    private static final Logger logger = Logger.getLogger(HttpRecordAdvice.class.getName());
 
     @Advice.OnMethodEnter
     public static void onEnter(@Advice.Argument(0) Object request) {

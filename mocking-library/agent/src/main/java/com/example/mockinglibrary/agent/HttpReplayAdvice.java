@@ -6,7 +6,6 @@ public class HttpReplayAdvice {
 
     @Advice.OnMethodEnter
     public static void onEnter(@Advice.Argument(0) Object request) {
-        // Do nothing
     }
 
     @Advice.OnMethodExit
