@@ -25,7 +25,7 @@ public class MockingLibraryAgent {
                         .intercept(Advice.to(mode.equals("REPLAY") ? DbReplayAdvice.class : DbRecordAdvice.class))
                 ).installOn(instrumentation);
 
-        //todo: second way of mocking JdbcTemplate and RestTemplate
+        //second way of mocking JdbcTemplate and RestTemplate
 //        new AgentBuilder.Default()
 //                .type(ElementMatchers.nameContains("RestTemplate"))
 //                .transform((builder, typeDescription, classLoader, javaModule) -> {
@@ -47,7 +47,8 @@ public class MockingLibraryAgent {
 //                    }
 //                    return builder;
 //                }).installOn(instrumentation);
-        //todo: first way of mocking JdbcTemplate and RestTemplate
+
+        //first way of mocking JdbcTemplate and RestTemplate
 //        new AgentBuilder.Default()
 //                .type(ElementMatchers.nameContains("RestTemplate"))
 //                .transform((builder, typeDescription, classLoader, javaModule) -> {
@@ -68,38 +69,38 @@ public class MockingLibraryAgent {
 //                    return builder;
 //                }).installOn(instrumentation);
     }
-
-    public static class HttpInterceptor {
-        @Advice.OnMethodEnter
-        public static void enter(@Advice.Argument(0) String url) {
-            System.out.println("HTTP Call intercepted: " + url);
-        }
-
-        @Advice.OnMethodExit
-        public static void exit(@Advice.Return Object result) {
-            System.out.println("HTTP Response: " + result);
-        }
-    }
-
-    public static class DbInterceptor {
-        @Advice.OnMethodEnter
-        public static void enter(@Advice.Argument(0) Object post) {
-            System.out.println("DB Save intercepted: " + post);
-        }
-
-        @Advice.OnMethodExit
-        public static void exit(@Advice.Return Object result) {
-            System.out.println("DB Response: " + result);
-        }
-    }
-
-    private static class JdbcTemplateMock {
-        public Object queryForObject(String sql, Class<?> requiredType, Object post) {
-            // Mock response
-//            return "Mocked response";
-            return  post;
-        }
-    }
+//
+//    public static class HttpInterceptor {
+//        @Advice.OnMethodEnter
+//        public static void enter(@Advice.Argument(0) String url) {
+//            System.out.println("HTTP Call intercepted: " + url);
+//        }
+//
+//        @Advice.OnMethodExit
+//        public static void exit(@Advice.Return Object result) {
+//            System.out.println("HTTP Response: " + result);
+//        }
+//    }
+//
+//    public static class DbInterceptor {
+//        @Advice.OnMethodEnter
+//        public static void enter(@Advice.Argument(0) Object post) {
+//            System.out.println("DB Save intercepted: " + post);
+//        }
+//
+//        @Advice.OnMethodExit
+//        public static void exit(@Advice.Return Object result) {
+//            System.out.println("DB Response: " + result);
+//        }
+//    }
+//
+//    private static class JdbcTemplateMock {
+//        public Object queryForObject(String sql, Class<?> requiredType, Object post) {
+//            // Mock response
+////            return "Mocked response";
+//            return  post;
+//        }
+//    }
 
 //    private static class PostMock {
 //        public Object save(Object post) {
