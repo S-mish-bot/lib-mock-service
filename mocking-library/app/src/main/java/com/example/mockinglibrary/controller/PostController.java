@@ -1,6 +1,7 @@
 package com.example.mockinglibrary.controller;
 
 import com.example.mockinglibrary.dto.RequestDTO;
+import com.example.mockinglibrary.dto.UserRequestDTO;
 import com.example.mockinglibrary.entity.Post;
 import com.example.mockinglibrary.repository.PostRepository;
 import com.example.mockinglibrary.service.PostService;
@@ -27,4 +28,13 @@ public class PostController {
     public ResponseEntity<?> createNewPost(@RequestBody RequestDTO request) {
         return new ResponseEntity<>(postService.createPost(request), HttpStatus.OK);
     }
+
+    @PostMapping("/createNewUser")
+    public ResponseEntity<?> createNewUser(@RequestBody UserRequestDTO request) {
+        return new ResponseEntity<>(postService.createUser(request), HttpStatus.OK);
+    }
+//    @GetMapping("/createNewUser")
+//    public ResponseEntity<?> createNewUser() {
+//        return new ResponseEntity<>(postService.createUser(request), HttpStatus.OK);
+//    }
 }

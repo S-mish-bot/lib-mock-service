@@ -22,6 +22,7 @@
             <artifactId>byte-buddy-agent</artifactId>
             <version>1.12.8</version>
         </dependency>
+
     </dependencies>
 
     <build>
