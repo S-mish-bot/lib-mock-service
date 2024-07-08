@@ -2,7 +2,11 @@ package com.example.mockinglibrary.agent;
 
 import net.bytebuddy.agent.builder.AgentBuilder;
 import net.bytebuddy.asm.Advice;
+import net.bytebuddy.description.type.TypeDescription;
+import net.bytebuddy.dynamic.DynamicType;
+import net.bytebuddy.implementation.MethodDelegation;
 import net.bytebuddy.matcher.ElementMatchers;
+import net.bytebuddy.utility.JavaModule;
 
 import java.lang.instrument.Instrumentation;
 
@@ -17,12 +21,54 @@ public class MockingLibraryAgent {
                         .intercept(Advice.to(mode.equals("REPLAY") ? HttpReplayAdvice.class : HttpRecordAdvice.class))
                 ).installOn(instrumentation);
 
+        System.out.println("DatabaseAgent loaded");
         new AgentBuilder.Default()
-                .type(ElementMatchers.named("org.springframework.jdbc.core.JdbcTemplate"))
+                .with(new AgentBuilder.Listener() {
+                    @Override
+                    public void onDiscovery(String typeName, ClassLoader classLoader, JavaModule module, boolean loaded) {
+                        System.out.println("Discovered: " + typeName);
+                    }
+
+                    @Override
+                    public void onTransformation(TypeDescription typeDescription, ClassLoader classLoader, JavaModule module, boolean loaded, DynamicType dynamicType) {
+                        System.out.println("Transformed: " + typeDescription);
+                    }
+
+                    @Override
+                    public void onIgnored(TypeDescription typeDescription, ClassLoader classLoader, JavaModule module, boolean loaded) {
+                        System.out.println("Ignored: " + typeDescription);
+                    }
+
+                    @Override
+                    public void onError(String typeName, ClassLoader classLoader, JavaModule module, boolean loaded, Throwable throwable) {
+                        System.err.println("Error: " + typeName);
+                        throwable.printStackTrace();
+                    }
+
+                    @Override
+                    public void onComplete(String typeName, ClassLoader classLoader, JavaModule module, boolean loaded) {
+                        System.out.println("Complete: " + typeName);
+                    }
+                })
+                .type(ElementMatchers.named("org.springframework.data.jpa.repository.support.SimpleJpaRepository"))
                 .transform((builder, typeDescription, classLoader, javaModule) -> builder
-                        .method(ElementMatchers.named("execute"))
-                        .intercept(Advice.to(mode.equals("REPLAY") ? DbReplayAdvice.class : DbRecordAdvice.class))
+                        .method(ElementMatchers.named("save"))
+//                                .or(ElementMatchers.named("findById"))
+//                                .or(ElementMatchers.named("findAll"))
+//                                .or(ElementMatchers.named("delete")))
+                        .intercept(mode.equals("REPLAY") ? Advice.to(DbReplayAdvice.class) : Advice.to(DbRecordAdvice.class))
                 ).installOn(instrumentation);
+
+
+//        new AgentBuilder.Default()
+//                .type(ElementMatchers.named("org.springframework.jdbc.core.JdbcTemplate"))
+//                .transform((builder, typeDescription, classLoader, javaModule) -> builder
+//                        .method(ElementMatchers.named("execute"))
+//                        .intercept(Advice.to(mode.equals("REPLAY") ? DbReplayAdvice.class : DbRecordAdvice.class))
+//                ).installOn(instrumentation);
+
+
+    }
 
 
 //        new AgentBuilder.Default()
@@ -69,7 +115,7 @@ public class MockingLibraryAgent {
 //                    }
 //                    return builder;
 //                }).installOn(instrumentation);
-    }
+//    }
 //
 //    public static class HttpInterceptor {
 //        @Advice.OnMethodEnter

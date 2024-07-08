@@ -33,8 +33,4 @@ public class PostController {
     public ResponseEntity<?> createNewUser(@RequestBody UserRequestDTO request) {
         return new ResponseEntity<>(postService.createUser(request), HttpStatus.OK);
     }
-//    @GetMapping("/createNewUser")
-//    public ResponseEntity<?> createNewUser() {
-//        return new ResponseEntity<>(postService.createUser(request), HttpStatus.OK);
-//    }
 }
