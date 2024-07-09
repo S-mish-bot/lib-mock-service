@@ -6,44 +6,14 @@ import net.bytebuddy.implementation.bytecode.assign.Assigner;
 import java.lang.reflect.Field;
 
 public class DbReplayAdvice {
-//    public static Object interceptSave(@Advice.Argument(0) Object entity) throws IllegalAccessException, InstantiationException {
-//        System.out.println("Intercepted save method with entity: " + entity);
-//        // Return a mock entity instead of saving the real entity
-//        return mockResult(entity);
-//    }
-
-//    @Advice.OnMethodEnter
-//    public static void onEnter(@Advice.Origin String method,
-//                               @Advice.AllArguments Object[] args) {
-//        System.out.println("DB Query::" + method);
-//    }
-//
-//    @Advice.OnMethodExit(onThrowable = Throwable.class)
-//    public static void onExit(@Advice.Return(readOnly = false, typing = Assigner.Typing.DYNAMIC) Object result,
-//                              @Advice.Origin String method,
-//                              @Advice.Thrown Throwable throwable) {
-//        if (throwable != null) {
-//            System.out.println("DB Exception::" + throwable.getMessage());
-//        } else {
-//            if (method.contains("save")) {
-//                System.out.println("DB Result Before Mock::" + result.toString());
-//                try {
-//                    result = mockResult(result);
-//                } catch (Exception e) {
-//                    e.printStackTrace();
-//                }
-//                System.out.println("DB Result After Mock::" + result);
-//            }
-//        }
-//    }
 
     @Advice.OnMethodEnter(skipOn = Advice.OnNonDefaultValue.class)
     public static Object interceptSave(@Advice.Argument(0) Object entity) throws IllegalAccessException, InstantiationException {
         System.out.println("Intercepted save method with entity: " + entity);
-        // Return a mock entity instead of saving the real entity
         return mockResult(entity);
     }
 
+    //currently not in use
     @Advice.OnMethodExit(onThrowable = Throwable.class)
     public static void onExit(@Advice.Enter Object mockEntity,
                               @Advice.Return(readOnly = false, typing = Assigner.Typing.DYNAMIC) Object result,
@@ -57,25 +27,23 @@ public class DbReplayAdvice {
     }
     public static Object mockResult(Object result) throws IllegalAccessException, InstantiationException {
         System.out.println("Mocking result object: " + result.toString());
-//        Class<?> clazz = result.getClass();
+        //create mocked response object
         Object mockEntity = result.getClass().newInstance();
         for (Field field : mockEntity.getClass().getDeclaredFields()) {
             field.setAccessible(true);
-            Object originalValue = field.get(result);
+            //setting id
             if (field.getName().equalsIgnoreCase("id") && field.getType() == Long.class) {
                 field.set(mockEntity, 1L);
             } else if (field.getType() == String.class) {
+                //setting name
                 if (field.getName().equalsIgnoreCase("name")) {
                     field.set(mockEntity, "Test Post 1");
-                } else if (field.getName().equalsIgnoreCase("contents")) {
+                } else if (field.getName().equalsIgnoreCase("contents")) { //setting contents
                     field.set(mockEntity, "This is a test post content.");
                 } else {
-                    field.set(mockEntity, "Mocked String");
+                    field.set(mockEntity, "Mocked String"); //setting extra parameters if any
                 }
-            } else if (field.getType() == boolean.class || field.getType() == Boolean.class) {
-                field.set(mockEntity, true);
             }
-            System.out.println("Field: " + field.getName() + " changed from " + originalValue + " to " + field.get(result));
         }
         return mockEntity;
     }

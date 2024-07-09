@@ -23,6 +23,7 @@ public class MockingLibraryAgent {
 
         System.out.println("DatabaseAgent loaded");
         new AgentBuilder.Default()
+                //debugging purpose
                 .with(new AgentBuilder.Listener() {
                     @Override
                     public void onDiscovery(String typeName, ClassLoader classLoader, JavaModule module, boolean loaded) {
@@ -52,25 +53,20 @@ public class MockingLibraryAgent {
                 })
                 .type(ElementMatchers.named("org.springframework.data.jpa.repository.support.SimpleJpaRepository"))
                 .transform((builder, typeDescription, classLoader, javaModule) -> builder
-                        .method(ElementMatchers.named("save"))
+                                .method(ElementMatchers.named("save"))
+//                        todo: handle for findById, delete, findAll
 //                                .or(ElementMatchers.named("findById"))
 //                                .or(ElementMatchers.named("findAll"))
 //                                .or(ElementMatchers.named("delete")))
-                        .intercept(mode.equals("REPLAY") ? Advice.to(DbReplayAdvice.class) : Advice.to(DbRecordAdvice.class))
+                                .intercept(mode.equals("REPLAY") ? Advice.to(DbReplayAdvice.class) : Advice.to(DbRecordAdvice.class))
                 ).installOn(instrumentation);
-
-
+    }
 //        new AgentBuilder.Default()
 //                .type(ElementMatchers.named("org.springframework.jdbc.core.JdbcTemplate"))
 //                .transform((builder, typeDescription, classLoader, javaModule) -> builder
 //                        .method(ElementMatchers.named("execute"))
 //                        .intercept(Advice.to(mode.equals("REPLAY") ? DbReplayAdvice.class : DbRecordAdvice.class))
 //                ).installOn(instrumentation);
-
-
-    }
-
-
 //        new AgentBuilder.Default()
 //                .type(ElementMatchers.nameContains("RestTemplate"))
 //                .transform((builder, typeDescription, classLoader, javaModule) -> {
